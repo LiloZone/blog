@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" >
+        <title>Blog LILO</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="i/favicon.ico" type="image/x-icon">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,500,700,800,900|Roboto+Mono:100,200,300,400,500,600,700,800,900&amp;subset=latin" rel="stylesheet">
+        <!-- Bootstrap 4.3.1 CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+        <!-- AOS 2.3.4 jQuery plugin CSS (Animations) -->
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <!-- FontAwesome CSS -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <!-- Startup 3 CSS (Styles for all blocks) -->
+        <link href="css/style.css" rel="stylesheet" />
+        <!-- jQuery 3.3.1 -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    </head> 
+    <body>
+
+        <!-- Header -->
+
+        <header class="padding_top250 padding_bottom250 header_8">
+            <nav class="navigation_11 transparent padding_top30 padding_bottom30">
+                <div class="container nopadding clearfix">
+                    <div class="font_second font18 white">
+                        <a href="index.html" class="font_second font18 padding_top10 padding_bottom10 padding_left10 padding_right10 radius10 bg_black white">PT</a>/<a href="en.html" class="font_second font18 padding_top10 padding_bottom10 padding_left10 padding_right10 radius10 bg_black white">EN</a></div>
+                    <div class="float_right text-right line_height40">
+                        <div class="inline_block padding_left10 padding_right10 radius20 dropdown bg_black">
+                            <a href="#" class="link white" id="navigation_11_dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars white"></i></a>
+                            <div class="bg_dark_gray dropdown-menu dropdown-menu-right" aria-labelledby="navigation_11_dropdown">
+                                <div><a href="#sobre" class="link white font_second">{{page.menuSobre}}</a></div>
+                                <div><a href="#maislilo" class="link white font_second">{{page.menuMaisLilo}}</a></div>
+                                <div><a href="#contato" class="link white font_second">{{page.menuContato}}</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <!-- About -->
+
+        <section id="sobre" class="pt-105 pb-95 bg-light ecommerce_2">
+            <div class="container px-xl-0 text-center">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-10 bottom30" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+                        <h2 class="left30 right30 bottom30 font_first uppercase black">{{page.sobreTitulo}}</h2>
+                    </div>
+
+                    <div class="col-xs-12" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                        {% for blog in site.data.blog %}
+                        <div class="col-md-10 col-lg-7 col-xl-6">
+                            <div class="mx-auto mb-30 px-30 pt-30 pb-30 radius20 d-flex justify-content-between color-heading product big" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                                <div class="d-flex flex-column justify-content-between">
+                                    <div class="top">
+                                        {% if page.url contains 'en' %}
+                                        <div class="f-14 semibold text-uppercase sp-20 brand height40">{{blog.keywordsEN}}</div>
+                                        <div class="mb-15 f-22 semibold color-main title height80">{{blog.tituloEN}}</div>
+                                        {% else %}
+                                        <div class="f-14 semibold text-uppercase sp-20 brand height40">{{blog.keywordsPT}}</div>
+                                        <div class="mb-15 f-22 semibold color-main title height80">{{blog.tituloPT}}</div>
+                                        {% endif %}
+                                        <img src="{{blog.foto1}}" class="radius10 mt-10 mb-25 w-full height300" alt="" />
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <p class="font_second font12">{{blog.mes}}/{{blog.ano}}</p>
+                                    </div>
+                                    <div class="mt-25 d-flex align-items-center bottom">
+                                        <a data-toggle="modal" data-target="#{{blog.id}}" class="font_second mr-15 btn sm border-gray color-main medium f-16">{{page.sobreSaibaMais}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    {% for blog in site.data.blog %}
+                    <div id="{{blog.id}}" class="modal in" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    {% if page.url contains 'en' %}
+                                    <h4 class="modal-title font_first font40 uppercase">{{blog.tituloEN}}</h4>
+                                    {% else %}
+                                    <h4 class="modal-title font_first font40 uppercase">{{blog.tituloPT}}</h4>
+                                    {% endif %}
+                                </div>
+                                <div class="modal-body padding_left30 padding_right30">
+                                    <img src="{{blog.foto2}}" class="top35 bottom35 width_full" alt="" />
+                                    {% if page.url contains 'en' %}
+                                    <p class="font_second font14 text_left"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsEN}}</p>
+                                    {% else %}
+                                    <p class="font_second font14 text_left"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsPT}}</p>
+                                    {% endif %}
+                                    <p class="font_second font18 text_left">---</p>
+                                    <br>
+                                    {% if page.url contains 'en' %}
+                                    <p class="font_second font18 text_left">{{blog.sinopseEN}}</p>
+                                    {% else %}
+                                    <p class="font_second font18 text_left">{{blog.sinopsePT}}</p>
+                                    {% endif %}
+                                    <br>
+                                    <p class="font_second font18 text_left">---</p>
+                                    <br>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default font_second font14" data-dismiss="modal">{{page.modalFechar}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Iniciatives -->
+
+        <section id="maislilo" class="pt-105 pb-90 bg_black text-center showcase_2">
+            <div class="container px-xl-0">
+                <div class="row justify-content-center">
+                    <div class="col-xl-8 col-lg-10">
+                        <h2 class="small white font_first uppercase" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">{{page.chamadaLilo}}</h2>
+                        <div class="mt-15 mb-25 f-22 color-heading text-adaptive" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container nopadding white text-center">
+                        <div class="margin_auto max_width470 inner">
+                            <a href="https://www.lilo.zone/" target="_blank" class="font12 btn lg action-1 bottom15">LILO.ZONE</a>
+                            <a href="https://academy.lilo.zone/" target="_blank" class="font12 btn lg action-1 bottom15">LILO.Academy</a>                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ilustra -->
+
+        <section class="content_6 padding_top120 padding_bottom110">
+            <div class="container nopadding max_width970">
+                <div class="max_width770 margin_auto text-center white inner height200">
+                    <div class="font14 font_second semibold uppercase spacing15 pretitle"></div>
+                    <h2 class="top30 font_first light font40 uppercase"> </h2>
+                    <div class="font18 font_second light opacity7 top40 text">
+                        <strong> </strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+
+        <footer id="contato" class="pt-75 pb-65 bg-black text-center footer_1">
+            <div class="container px-xl-0">
+                <div class="row justify-content-between align-items-center lh-40 links">
+                    <div class="col-lg-4 col-sm-6 text-sm-right text-lg-left order-1 order-lg-0" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                        <a a href="tel:+55 11 948 997 972" class="mr-15 link color-main">+55 11 948 997 972</a>
+                    </div>
+                    <div class="mb-10 mb-lg-0 col-lg-auto order-0" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+                        <a href="mailto:contato@lilo.zone" class="logo color-main">contato@lilo.zone</a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 text-sm-left text-lg-right order-2 order-lg-0" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                        <a href="https://www.facebook.com/lilo.zone" target="_blank" class="mx-15 link color-main"><i class="fab fa-facebook-square"></i></a>
+                        <a href="https://www.instagram.com/lilo.zone/" target="_blank" class="ml-15 link color-main"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap 4.3.1 JS -->
+        <!--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <!-- Fancybox 3 jQuery plugin JS (Open images and video in popup) -->
+        <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+        <!-- Google maps JS API -->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDP6Ex5S03nvKZJZSvGXsEAi3X_tFkua4U"></script>
+        <!-- Slick 1.8.1 jQuery plugin JS (Sliders) -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+        <!-- AOS 2.3.4 jQuery plugin JS (Animations) -->
+        <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+        <!-- Maskedinput jQuery plugin JS (Masks for input fields) -->
+        <script src="js/jquery.maskedinput.min.js"></script>
+        <!-- Startup 3 JS (Custom js for all blocks) -->
+        <script src="js/script.js"></script>
+
+    </body>
+</html>

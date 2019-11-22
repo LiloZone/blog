@@ -8,7 +8,8 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,600,500,700,800,900|Roboto+Mono:100,200,300,400,500,600,700,800,900&amp;subset=latin" rel="stylesheet">
         <!-- Bootstrap 4.3.1 CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>-->
         <!-- Slick 1.8.1 jQuery plugin CSS (Sliders) -->
         <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
         <!-- Fancybox 3 jQuery plugin CSS (Open images and video in popup) -->
@@ -50,74 +51,72 @@
         <!-- About -->
 
         <section id="sobre" class="bg-light l-portfolio">
-                <div class="row justify-content-center text-center">
-                    <div class="col-xl-8 col-lg-10 bottom30" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
-                        <h2 class="left30 right30 bottom30 font_first uppercase black">{{page.sobreTitulo}}</h2>
-                    </div>
-            </div>
-                <div class="grid-container bg_black" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
-                    <ul>
-                        {% for blog in site.data.blog %}
-                        <li class="cbp-item">
-                            <a data-toggle="modal" data-target="#{{blog.id}}">
-                                <figure class="block-item">
-                                    <img src="{{blog.foto1}}" alt="" />
-                                    <figcaption>
-                                        <div class="block-item__bg"></div>
-                                        <div class="block-item__details">
-                                            {% if page.url contains 'en' %}
-                                            <p class="font_second font14 semibold white right15">{{blog.keywordsEN}}</p>
-                                            <h4 class="uppercase font_first font18 white top15 right15">{{blog.tituloEN}}</h4>
-                                            {% else %}
-                                            <p class="font_second font14 semibold  white right15">{{blog.keywordsPT}}</p>
-                                            <h4 class="uppercase font_first font18 white top15 right15">{{blog.tituloPT}}</h4>
-                                            {% endif %}
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            {% endfor %}
-                        </li>
-                    </ul>
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-10 bottom30" data-aos-duration="600" data-aos="fade-down" data-aos-delay="0">
+                    <h2 class="left30 right30 bottom30 font_first uppercase black text-center">{{page.sobreTitulo}}</h2>
                 </div>
-                {% for blog in site.data.blog %}
-                    <div id="{{blog.id}}" class="modal in" role="dialog">
-                        <div class="modal-dialog">
-
-                             Modal content
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    {% if page.url contains 'en' %}
-                                    <h4 class="modal-title font_first font40 uppercase">{{blog.tituloEN}}</h4>
-                                    {% else %}
-                                    <h4 class="modal-title font_first font40 uppercase">{{blog.tituloPT}}</h4>
-                                    {% endif %}
-                                </div>
-                                <div class="modal-body padding_left30 padding_right30">
-                                    <img src="{{blog.foto2}}" class="top35 bottom35 width_full" alt="" />
-                                    {% if page.url contains 'en' %}
-                                    <p class="font_second font14 text_left"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsEN}}</p>
-                                    {% else %}
-                                    <p class="font_second font14 text_left"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsPT}}</p>
-                                    {% endif %}
-                                    <p class="font_second font18 text_left">---</p>
-                                    <br>
-                                    {% if page.url contains 'en' %}
-                                    <p class="font_second font18 text_left">{{blog.sinopseEN}}</p>
-                                    {% else %}
-                                    <p class="font_second font18 text_left">{{blog.sinopsePT}}</p>
-                                    {% endif %}
-                                    <br>
-                                    <p class="font_second font18 text_left">---</p>
-                                    <br>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default font_second font14" data-dismiss="modal">{{page.modalFechar}}</button>
-                                </div>
-                            </div>
+            </div>
+            <div class="grid-container bg_black" data-aos-duration="600" data-aos="fade-down" data-aos-delay="300">
+                <ul>
+                    {% for blog in site.data.blog %}
+                    <li class="cbp-item">
+                        <a data-toggle="modal" data-target="#{{blog.id}}">
+                            <figure class="block-item">
+                                <img src="{{blog.foto1}}" alt="" />
+                                <figcaption>
+                                    <div class="block-item__bg"></div>
+                                    <div class="block-item__details">
+                                        {% if page.url contains 'en' %}
+                                        <p class="font_second font14 semibold white right15">{{blog.keywordsEN}}</p>
+                                        <h4 class="uppercase font_first font18 white top15 right15">{{blog.tituloEN}}</h4>
+                                        {% else %}
+                                        <p class="font_second font14 semibold  white right15">{{blog.keywordsPT}}</p>
+                                        <h4 class="uppercase font_first font18 white top15 right15">{{blog.tituloPT}}</h4>
+                                        {% endif %}
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </a>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+            {% for blog in site.data.blog %}
+            <div id="{{blog.id}}" class="modal in" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            {% if page.url contains 'en' %}
+                            <h4 class="modal-title font_first font40 uppercase text-center black">{{blog.tituloEN}}</h4>
+                            {% else %}
+                            <h4 class="modal-title font_first font40 uppercase text-center black">{{blog.tituloPT}}</h4>
+                            {% endif %}
+                        </div>
+                        <div class="modal-body padding_left30 padding_right30">
+                            <img src="{{blog.foto2}}" class="top35 bottom35 width_full" alt="" />
+                            {% if page.url contains 'en' %}
+                            <p class="font_second font14 text_left black"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsEN}}</p>
+                            {% else %}
+                            <p class="font_second font14 text_left black"><strong>{{page.modalKeywords}}:</strong> {{blog.keywordsPT}}</p>
+                            {% endif %}
+                            <p class="font_second font18 text_left dark_gray">---</p>
+                            <br>
+                            {% if page.url contains 'en' %}
+                            <p class="font_second font18 text_left dark_gray">{{blog.sinopseEN}}</p>
+                            {% else %}
+                            <p class="font_second font18 text_left dark_gray">{{blog.sinopsePT}}</p>
+                            {% endif %}
+                            <br>
+                            <p class="font_second font18 text_left dark_gray">---</p>
+                            <br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default font_second font14" data-dismiss="modal">{{page.modalFechar}}</button>
                         </div>
                     </div>
-                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
         </section>
 
         <!-- Iniciatives -->
@@ -188,7 +187,7 @@
         <script src="js/jquery.maskedinput.min.js"></script>
         <!-- Startup 3 JS (Custom js for all blocks) -->
         <script src="js/script.js"></script>
-        
+
         <script src="js/jquery.1.12.4.js"></script>
         <script src="js/jquery.appear.js"></script>
         <script src="js/jquery.cubeportfolio.min.js"></script>

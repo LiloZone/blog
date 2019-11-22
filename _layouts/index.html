@@ -79,9 +79,9 @@
                             {% endfor %}
                         </li>
                     </ul>
-                    
-                    {% for blog in site.data.blog %}
-                    <div id="{{blog.id}}" class="modal fade" role="dialog">
+                </div>
+                {% for blog in site.data.blog %}
+                    <div id="{{blog.id}}" class="modal in" role="dialog">
                         <div class="modal-dialog">
 
                              Modal content
@@ -118,7 +118,6 @@
                         </div>
                     </div>
                     {% endfor %}
-                </div>
         </section>
 
         <!-- Iniciatives -->
